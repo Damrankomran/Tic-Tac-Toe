@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:xox_game/utilities/constants.dart';
 
 class CustomDialog extends StatelessWidget {
   final title;
@@ -7,24 +8,25 @@ class CustomDialog extends StatelessWidget {
   final actionText;
 
   CustomDialog(this.title, this.content, this.callback,
-      [this.actionText = "Reset"]);
-      
+      [this.actionText = "Yeniden Başla"]);
+
   @override
   Widget build(BuildContext context) {
     return new AlertDialog(
       title: new Text(title),
       content: SingleChildScrollView(
-        child:  Column(
-          children: <Widget>[
-              new Text(content)
-            ],
-          ),
+        child: Column(
+          children: <Widget>[new Text(content)],
         ),
+      ),
       actions: <Widget>[
         new FlatButton(
           onPressed: callback,
-          color: Colors.white,
-          child: new Text(actionText),
+          color: dialogButtonColor,
+          child: new Text(
+            actionText,
+            style: dialogButtonTextStyle,
+          ),
         ),
       ],
     );

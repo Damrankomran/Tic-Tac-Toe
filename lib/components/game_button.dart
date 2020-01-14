@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:xox_game/utilities/constants.dart';
 
 class GameButton extends StatelessWidget{
 
@@ -7,27 +8,22 @@ class GameButton extends StatelessWidget{
   String text;
   Color color;
   bool enable;
-
-  //Game Button class'ının constructor'ı
+  
   GameButton({this.id,this.text = "",this.enable = true, this.color = Colors.grey, this.onPress});
 
   @override
   Widget build(BuildContext context) {
       return(
           SizedBox(
-              width: 100.0,
-              height: 100.0,
+              width: buttonWidth,
+              height: buttonHeight,
               child: RaisedButton(
-                padding: EdgeInsets.all(10.0),
+                padding: buttonPadding,
                 color: this.color,
                 disabledColor: this.color,
                 child: Text(
                   this.text,
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 80.0,
-                      fontWeight: FontWeight.w200
-                  ),
+                  style: buttonTextStyle
                 ),
                 onPressed: this.onPress,
               )

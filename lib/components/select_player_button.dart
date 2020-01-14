@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:xox_game/utilities/constants.dart';
 
 class SelectPlayerButton extends StatelessWidget {
 
@@ -14,8 +15,8 @@ class SelectPlayerButton extends StatelessWidget {
       onTap: onPress,
       child: Container(
         child: this.cardChild,
-        margin: EdgeInsets.only(top: 0.0,left: 15.0,right: 15.0,bottom: 15.0),
-        height: 200.0,
+        margin: selectPlayerButtonMargin,
+        height: selectPlayerButtonHeight,
         //height: MediaQuery.of(context).size.height * 0.25,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10.0),

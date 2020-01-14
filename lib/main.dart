@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:xox_game/screens/HomeScreen.dart';
 import 'package:xox_game/screens/LauncherScreen.dart';
 
 void main() => runApp(MyApp());

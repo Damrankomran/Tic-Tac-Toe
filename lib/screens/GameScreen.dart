@@ -1,13 +1,12 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:xox_game/components/custom_dialog.dart';
 import 'package:xox_game/components/game_button.dart';
 import 'package:xox_game/components/winner_counter.dart';
-const ButtonColor = Color(0xFF1D1E33);
+import 'package:xox_game/utilities/constants.dart';
+
 class GameScreen extends StatefulWidget {
-  
 
   final String gameType;
 
@@ -75,7 +74,7 @@ class _GameScreenState extends State<GameScreen> {
           showDialog(
             context: context,
             barrierDismissible: false,
-            builder: (_) => new CustomDialog("Berabere", "Yeniden başlamak için 'Sıfırla' butonuna tıklayın!", resetGame)
+            builder: (_) => new CustomDialog("Berabere", "Yeniden başlamak için 'Yeniden Başla' butonuna tıklayın!", resetGame)
           );
         }
         else {
@@ -199,7 +198,7 @@ class _GameScreenState extends State<GameScreen> {
         showDialog(
           context: context,
           barrierDismissible: false,
-          builder: (_) => new CustomDialog("X Kazandı", "Yeniden başlamak için 'Sıfırla' butonuna tıklayın!", resetGame)
+          builder: (_) => new CustomDialog("X Kazandı", "Yeniden başlamak için 'Yeniden Başla' butonuna tıklayın!", resetGame)
         );
         for(var i = 0; i < buttonList.length; i++){
           buttonList[i].enable = false;
@@ -209,7 +208,7 @@ class _GameScreenState extends State<GameScreen> {
         showDialog(
           context: context,
           barrierDismissible: false,
-          builder: (_) => new CustomDialog("O Kazandı", "Yeniden başlamak için 'Sıfırla' butonuna tıklayın!", resetGame)
+          builder: (_) => new CustomDialog("O Kazandı", "Yeniden başlamak için 'Yeniden Başla' butonuna tıklayın!", resetGame)
         );
         for(var i = 0; i < buttonList.length; i++){
           buttonList[i].enable = false;
@@ -226,7 +225,7 @@ class _GameScreenState extends State<GameScreen> {
     return Scaffold(
       appBar: new AppBar(
         centerTitle: true,
-        title: new Text("X O X"),
+        title: new Text("Tic-Tac-Toe"),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -235,12 +234,12 @@ class _GameScreenState extends State<GameScreen> {
           Expanded(
             flex:3,
             child: new GridView.builder(
-              padding: const EdgeInsets.all(10.0),
+              padding: gameAreaPadding,
               gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 3,
-                childAspectRatio: 1.0,
-                crossAxisSpacing: 9.0,
-                mainAxisSpacing: 9.0
+                crossAxisCount: kCrossAxisCount,
+                childAspectRatio: kChildAspectRatio,
+                crossAxisSpacing: kCrossAxisSpacing,
+                mainAxisSpacing: kMainAxisSpacing
               ),
               itemCount: buttonList.length,
               itemBuilder: (context, i ) => new GameButton(
@@ -260,13 +259,13 @@ class _GameScreenState extends State<GameScreen> {
               children: <Widget>[
                 WinnerCounter(
                   counter: winnerX,
-                  icon: FontAwesomeIcons.times,
-                  color: Colors.red,
+                  icon: iconX,
+                  color: winnerXColor,
                 ),
                 WinnerCounter(
                   counter: winnerY,
-                  icon: FontAwesomeIcons.circle,
-                  color: Colors.green,
+                  icon: iconY,
+                  color: winnerYColor,
                 )
               ],
             ), 
@@ -275,10 +274,10 @@ class _GameScreenState extends State<GameScreen> {
           RaisedButton(
             child: new Text(
               "Sıfırla",
-              style: new TextStyle(color: Colors.white, fontSize: 20.0),
+              style: resetButtonTextStyle,
             ),
-            color: Colors.purple,
-            padding: const EdgeInsets.all(20.0),
+            color: resetButtonColor,
+            padding: raisedButtonPadding,
             onPressed: resetArea,
           )
         ],

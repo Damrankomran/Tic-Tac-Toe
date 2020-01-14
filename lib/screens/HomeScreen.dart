@@ -5,8 +5,7 @@ import 'package:xox_game/components//icon_content.dart';
 import 'package:xox_game/components/logo.dart';
 import 'package:xox_game/components/select_player_button.dart';
 import 'package:xox_game/screens/GameScreen.dart';
-
-const ButtonColor = Color(0xFF1D1E33);
+import 'package:xox_game/utilities/constants.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -24,7 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
           Expanded(
             flex: 2,
             child: Logo(
-              image: AssetImage('assets/logo.png'),
+              image: appIcon,
               title: "X-O-X",
             )
           ),
@@ -34,7 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
               children: <Widget>[
                 Expanded(
                   child: SelectPlayerButton(
-                    color: ButtonColor,
+                    color: gameTypeColor,
                     cardChild: IconContent(
                       icon: FontAwesomeIcons.userAlt, label: 'Tek Kişilik',),
                     onPress: () {
@@ -44,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 Expanded(
                   child: SelectPlayerButton(
-                    color: ButtonColor,
+                    color: gameTypeColor,
                     cardChild: IconContent(
                       icon: FontAwesomeIcons.userFriends, label: 'İki Oyuncu',),
                     onPress: () {
